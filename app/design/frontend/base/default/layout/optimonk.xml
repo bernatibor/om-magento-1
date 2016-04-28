@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * OptiMonk extension for Magento
+ *
+ * @package     Wse_OptiMonk
+ */
+ -->
+<layout>
+    <default>
+        <block type="optimonk/cart" name="optimonk_cart" template="optimonk/cart.phtml" />
+        <block type="optimonk/entrycode" name="optimonk" template="optimonk/entrycode.phtml" />
+
+        <reference name="after_body_start">
+            <action method="append">
+                <block>optimonk_script</block>
+            </action>
+        </reference>
+    </default>
+</layout>

@@ -1,0 +1,27 @@
+<?php
+/**
+ * OptiMonk plugin for Magento
+ *
+ * @package     Wse_OptiMonk
+ */
+$moduleName = $this->getRequest()->getModuleName();
+$controllerName = $this->getRequest()->getControllerName();
+$actionName = $this->getRequest()->getActionName();
+$route = $moduleName . '/' . $controllerName . '/' . $actionName;
+?>
+<?php if ($this->isEnabled()) : ?>
+    <?php $this->addAttribute('pageType', $route); ?>
+    <?php $childScript = $this->getChildScript(); ?>
+    <?php if (!empty($childScript)) : ?>
+        <?= $childScript; ?>
+    <?php endif; ?>
+    <!-- OptiMonk Entry Code -->
+    <script>
+        (function(e,a){
+            var t,r=e.getElementsByTagName("head")[0],c=e.location.protocol;
+            t=e.createElement("script");t.type="text/javascript";
+            t.charset="utf-8";t.async=!0;t.defer=!0;
+            t.src=c+"//optimonk.bernatibor/public/"+a+"/js/preload.js";r.appendChild(t);
+        })(document,"<?php echo $this->getId(); ?>");
+    </script>
+<?php endif; ?>
